@@ -23,16 +23,9 @@ export function About() {
             winner, regardless of the year they've won it{" "}
           </p>
           <p>
-            Please note that the name of the player/nation/club must begin with
-            a capitalized letter and if it is a player you need to write the
-            last name
-          </p>
-          <p>
-            For example: <strong>Ronaldo</strong> is a valid answer but{" "}
-            <strong>
-              <u>messi</u>
-            </strong>{" "}
-            is not.
+              Please note that for the Ballon D'or quiz you must only write the last name (except if 2 different players with the same name have won it).
+              For the Champions League quiz you must write the whole name of the club.
+              <p>For example : "Manchester United" or "Bayern Munich."</p>
           </p>
         </div>
         <div classname="hardRules">
