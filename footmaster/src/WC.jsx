@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getRandomYear, handleEasyGuess, handleHardGuess } from "../src/logic/functions";
 
 export function WC() {
   const [diff, setDiff] = useState(false);
@@ -17,69 +18,40 @@ export function WC() {
   ];
 
   const hardMode = {
-    1930: "Uruguay",
-    1934: "Italy",
-    1938: "Italy",
-    1950: "Uruguay",
-    1954: "Germany",
-    1958: "Brazil",
-    1962: "Brazil",
-    1966: "England",
-    1970: "Brazil",
-    1974: "Germany",
-    1978: "Argentina",
-    1982: "Italy",
-    1986: "Argentina",
-    1990: "Germany",
-    1994: "Brazil",
-    1998: "France",
-    2002: "Brazil",
-    2006: "Italy",
-    2010: "Spain",
-    2014: "Germany",
-    2018: "France",
-    2022: "Argentina"
+    1930: "Uruguay", 1934: "Italy", 1938: "Italy", 1950: "Uruguay",
+    1954: "Germany", 1958: "Brazil", 1962: "Brazil", 1966: "England",
+    1970: "Brazil", 1974: "Germany", 1978: "Argentina", 1982: "Italy",
+    1986: "Argentina", 1990: "Germany", 1994: "Brazil", 1998: "France",
+    2002: "Brazil", 2006: "Italy", 2010: "Spain", 2014: "Germany",
+    2018: "France", 2022: "Argentina"
   };
 
-  function getRandomYear() {
-    const years = Object.keys(hardMode);
-    const randIndex = Math.floor(Math.random() * years.length);
-    return parseInt(years[randIndex]);
-  }
-
   function startHardMode() {
-    const newYear = getRandomYear();
-    setCurrentYear(newYear);
+    setCurrentYear(getRandomYear(hardMode));
     setFeedback("");
   }
 
   function handleGuess() {
-    const trimmedAns = ans.trim();
-
     if (mode === "Easy") {
-      if (answers.includes(trimmedAns) && !correctGuesses.includes(trimmedAns)) {
-        const updated = [...correctGuesses, trimmedAns];
-        setCorrectGuesses(updated);
-        if (updated.length === answers.length) {
-          setShowEndMessage(true);
-        }
+      const { isNewCorrect, updatedGuesses } = handleEasyGuess(ans, correctGuesses, answers);
+
+      if (isNewCorrect) {
+        setCorrectGuesses(updatedGuesses);
+        if (updatedGuesses.length === answers.length) setShowEndMessage(true);
       } else {
         const newLives = lives - 1;
         setLives(newLives);
-        if (newLives === 0) {
-          setGameOver(true);
-        }
+        if (newLives === 0) setGameOver(true);
       }
     } else if (mode === "Hard") {
-      if (trimmedAns.toLowerCase() === hardMode[currentYear].toLowerCase()) {
-        setFeedback(`Correct! ${currentYear} was won by ${hardMode[currentYear]}.`);
+      const { isCorrect, correctAnswer } = handleHardGuess(ans, currentYear, hardMode);
+      if (isCorrect) {
+        setFeedback(`Correct! ${currentYear} was won by ${correctAnswer}.`);
       } else {
         const newLives = lives - 1;
         setLives(newLives);
-        setFeedback(`Wrong! The correct answer was ${hardMode[currentYear]}.`);
-        if (newLives === 0) {
-          setGameOver(true);
-        }
+        setFeedback(`Wrong! The correct answer was ${correctAnswer}.`);
+        if (newLives === 0) setGameOver(true);
       }
     }
 
