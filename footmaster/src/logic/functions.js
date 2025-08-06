@@ -5,7 +5,10 @@ export function getRandomYear(hardMode) {
 }
 
 export function handleEasyGuess(input, correctGuesses, answers) {
-  const trimmed = input.trim();
+  const trimmed = input.trim().toLowerCase();
+  for (let i=0 ; i < answers.length;++i){
+      answers[i] = answers[i].toLowerCase();
+  }
   const isNewCorrect = answers.includes(trimmed) && !correctGuesses.includes(trimmed);
   return {
     isNewCorrect,

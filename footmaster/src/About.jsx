@@ -24,7 +24,7 @@ export function About() {
           </p>
           <p>
               Please note that for the Ballon D'or quiz you must only write the last name (except if 2 different players with the same name have won it).
-              For the Champions League quiz you must write the whole name of the club.
+              For the Champions League quiz - some of the teams must be written in their entirety.
               <p>For example : "Manchester United" or "Bayern Munich."</p>
           </p>
         </div>
