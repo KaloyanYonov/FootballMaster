@@ -123,11 +123,11 @@ export function BD() {
     2010: "Messi",
     2011: "Messi",
     2012: "Messi",
-    2013: "Ronaldo",
-    2014: "Ronaldo",
+    2013: "Cristiano Ronaldo",
+    2014: "Cristiano Ronaldo",
     2015: "Messi",
-    2016: "Ronaldo",
-    2017: "Ronaldo",
+    2016: "Cristiano Ronaldo",
+    2017: "Cristiano Ronaldo",
     2018: "Modric",
     2019: "Messi",
     2021: "Messi",
@@ -265,7 +265,7 @@ export function BD() {
         <div>
           <p>Lives left: {lives}</p>
           <p>
-            Who won the Ballon D'or League in <strong>{currentYear}</strong>?
+            Who won the Ballon D'or in <strong>{currentYear}</strong>?
           </p>
           <input
             placeholder="Enter player name"

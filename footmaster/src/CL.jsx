@@ -25,7 +25,7 @@ export function CL() {
     1967: "Celtic", 1968: "Manchester United", 1969: "Milan", 1970: "Feyenoord", 1971: "Ajax", 1972: "Ajax",
     1973: "Ajax", 1974: "Bayern Munich", 1975: "Bayern Munich", 1976: "Bayern Munich", 1977: "Liverpool", 1978: "Liverpool",
     1979: "Nottingham Forest", 1980: "Nottingham Forest", 1981: "Liverpool", 1982: "Aston Villa",
-    1983: "Hamburger", 1984: "Liverpool", 1985: "Juventus", 1986: "Steaua", 1987: "Porto", 1988: "PSV",
+    1983: "Hamburg", 1984: "Liverpool", 1985: "Juventus", 1986: "Steaua", 1987: "Porto", 1988: "PSV",
     1989: "Milan", 1990: "Milan", 1991: "Red Star", 1992: "Barcelona", 1993: "Marseille", 1994: "Milan",
     1995: "Ajax", 1996: "Juventus", 1997: "Borussia Dortmund", 1998: "Real Madrid", 1999: "Manchester United",
     2000: "Real Madrid", 2001: "Bayern Munich", 2002: "Real Madrid", 2003: "Milan", 2004: "Porto", 2005: "Liverpool",
