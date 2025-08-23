@@ -78,6 +78,17 @@ export function WC() {
   
   return (
     <main className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 flex items-center justify-center p-4">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+      >
+        <img
+          src="https://i.pinimg.com/736x/2f/68/a4/2f68a434ce88bcd2ed81e276528efb36.jpg"
+          alt=""
+          className="max-w-[100%] max-h-[80%] object-contain opacity-30 grayscale mix-blend-multiply select-none"
+          loading="lazy"
+        />
+      </div>
       <section className="w-full max-w-xl rounded-2xl bg-white/90 backdrop-blur p-6">
         {!diff ? (
           <>
@@ -93,7 +104,7 @@ export function WC() {
                 className="px-5 py-3 rounded-xl bg-red-800 text-white hover:bg-red-700 transition focus:outline-none focus:ring focus:ring-sky-400"
                 onClick={() => { setMode("Hard"); setDiff(true); startHardMode(); }}
               >
-                Hard
+                Hard 
               </button>
             </div>
           </>
