@@ -296,31 +296,6 @@ export function CL() {
         ) : mode === "Easy" ? (
           
           <div>
-             <ul className="mt-3 grid grid-cols-6 gap-3 mb-10">
-            {answers.map((name) => {
-              const url = logoByClub[name];
-              const guessed = isGuessed(name);
-              return (
-                <li key={name} className="flex flex-col items-center text-center">
-                  <img
-                    src={url}
-                    alt={`${name} crest`}
-                    className={`h-15 w-15 object-contain transition-opacity duration-200 ${
-                      guessed ? "opacity-100" : "opacity-0"
-                    }`}
-                    loading="lazy"
-                  />
-                  <span
-                    className={`mt-1 text-[15px] ${
-                      guessed ? "text-slate-700" : "text-transparent"
-                    }`}
-                  >
-                    {name}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
             <div className="flex items-center justify-between text-sm text-slate-700">
               <p className="inline-flex items-center gap-2">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
@@ -351,6 +326,31 @@ export function CL() {
             >
               Enter
             </button>
+             <ul className="mt-10 grid grid-cols-6 gap-3 mb-3">
+            {answers.map((name) => {
+              const url = logoByClub[name];
+              const guessed = isGuessed(name);
+              return (
+                <li key={name} className="flex flex-col items-center text-center">
+                  <img
+                    src={url}
+                    alt={`${name} crest`}
+                    className={`h-15 w-15 object-contain transition-opacity duration-200 ${
+                      guessed ? "opacity-100" : "opacity-0"
+                    }`}
+                    loading="lazy"
+                  />
+                  <span
+                    className={`mt-1 text-[15px] ${
+                      guessed ? "text-slate-700" : "text-transparent"
+                    }`}
+                  >
+                    {name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
           </div>
         ) : (
           <div>
