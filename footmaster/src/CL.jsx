@@ -71,7 +71,7 @@ export function CL() {
     1980: "Nottingham Forest",
     1981: "Liverpool",
     1982: "Aston Villa",
-    1983: "Hamburg",
+    1983: "Hamburger",
     1984: "Liverpool",
     1985: "Juventus",
     1986: "Steaua",
@@ -115,6 +115,37 @@ export function CL() {
     2024: "Real Madrid",
     2025: "PSG",
   };
+
+   const logoByClub = {
+    "Real Madrid" : "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/640px-Real_Madrid_CF.svg.png",
+    "Barcelona" : "https://upload.wikimedia.org/wikipedia/sco/thumb/4/47/FC_Barcelona_%28crest%29.svg/2020px-FC_Barcelona_%28crest%29.svg.png",
+    "Manchester City": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png",
+    "Manchester United" : "https://upload.wikimedia.org/wikipedia/sco/thumb/7/7a/Manchester_United_FC_crest.svg/2021px-Manchester_United_FC_crest.svg.png",
+    "Ajax" : "https://upload.wikimedia.org/wikipedia/sco/thumb/7/79/Ajax_Amsterdam.svg/1017px-Ajax_Amsterdam.svg.png",
+    "PSG" : "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/640px-Paris_Saint-Germain_F.C..svg.png" ,
+    "Bayern Munich" : "https://upload.wikimedia.org/wikipedia/commons/8/8d/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg" ,
+    "Borussia Dortmund": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/1200px-Borussia_Dortmund_logo.svg.png" ,
+    "Liverpool" : "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png" ,
+    "Chelsea" : "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png" ,
+    "Nottingham Forest" : "https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Nottingham_Forest_F.C._logo.svg/1200px-Nottingham_Forest_F.C._logo.svg.png",
+    "Aston Villa" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrIbm_0tHQs_haHnk8i7XWqonIYUlaIpbt5g&s",
+    "Inter" : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Inter_Old_Logo_%282007-2014%29.svg/1491px-Inter_Old_Logo_%282007-2014%29.svg.png",
+    "Milan" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/250px-Logo_of_AC_Milan.svg.png" ,
+    "Juventus" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Juventus_Logo.png/1200px-Juventus_Logo.png",
+    "PSV" : "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/1200px-PSV_Eindhoven.svg.png", 
+    "Feyenoord" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feyenoord_logo_since_2024.svg/1200px-Feyenoord_logo_since_2024.svg.png",
+    "Benfica" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSwJ0o5cMqZXdFW8v8LTnZbEciVyT85LH04g&s",
+    "Porto" : "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/FC_Porto.svg/1200px-FC_Porto.svg.png",
+    "Red Star" : "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Red_Star_Belgrade_crest.svg/800px-Red_Star_Belgrade_crest.svg.png",
+    "Marseille" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Olympique_Marseille_logo.svg/1200px-Olympique_Marseille_logo.svg.png",
+    "Hamburger" : "https://upload.wikimedia.org/wikipedia/commons/f/f7/Hamburger_SV_logo.svg",
+    "Steaua" : "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Steaua_Bucure%C8%99ti.svg/1200px-Steaua_Bucure%C8%99ti.svg.png",
+    "Celtic" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc0GtnyKFGARgNxdmjcQ5LhgE_hPbAzVxTqg&s"
+
+  };
+
+  const guessedSet = new Set(correctGuesses.map((g) => g.toLowerCase()));
+  const isGuessed = (name) => guessedSet.has(name.toLowerCase());
 
   function startHardMode() {
     setCurrentYear(getRandomYear(hardMode));
@@ -253,7 +284,7 @@ export function CL() {
         ) : showEndMessage ? (
           <div className="text-center">
             <h2 className="text-2xl font-semibold text-emerald-700">
-              🎉 Congratulations! You named all Champions League winners!
+              Congratulations! You named all Champions League winners!
             </h2>
             <button
               className="mt-6 w-full px-5 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition focus:outline-none focus:ring focus:ring-emerald-400"
@@ -263,7 +294,33 @@ export function CL() {
             </button>
           </div>
         ) : mode === "Easy" ? (
+          
           <div>
+             <ul className="mt-3 grid grid-cols-6 gap-3 mb-10">
+            {answers.map((name) => {
+              const url = logoByClub[name];
+              const guessed = isGuessed(name);
+              return (
+                <li key={name} className="flex flex-col items-center text-center">
+                  <img
+                    src={url}
+                    alt={`${name} crest`}
+                    className={`h-15 w-15 object-contain transition-opacity duration-200 ${
+                      guessed ? "opacity-100" : "opacity-0"
+                    }`}
+                    loading="lazy"
+                  />
+                  <span
+                    className={`mt-1 text-[15px] ${
+                      guessed ? "text-slate-700" : "text-transparent"
+                    }`}
+                  >
+                    {name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
             <div className="flex items-center justify-between text-sm text-slate-700">
               <p className="inline-flex items-center gap-2">
                 <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
