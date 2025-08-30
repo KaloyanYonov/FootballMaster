@@ -59,7 +59,7 @@ export function WC() {
     Spain:"https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Spain_national_football_team_crest.svg/1200px-Spain_national_football_team_crest.svg.png",
     France:"https://logodownload.org/wp-content/uploads/2022/07/france-national-football-team-logo.png",
     Italy:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Logo_Italy_National_Football_Team_-_2023.svg/250px-Logo_Italy_National_Football_Team_-_2023.svg.png",
-    England:"https://previews.123rf.com/images/stas11/stas111805/stas11180500013/102007456-logo-of-the-england-national-football-team.jpg",
+    England:"https://upload.wikimedia.org/wikipedia/en/8/8b/England_national_football_team_crest.svg",
     Brazil:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Brazilian_Football_Confederation_logo.svg/1200px-Brazilian_Football_Confederation_logo.svg.png",
   };
 
@@ -240,7 +240,9 @@ export function WC() {
               >
                 Enter
               </button>
-              <ul className="mt-10 grid grid-cols-2 gap-3 mb-3">
+              
+            </div>
+            <ul className="mt-10 flex gap-3 mb-3 absolute">
             {answers.map((name) => {
               const url = logoByCountry[name];
               const guessed = isGuessed(name);
@@ -265,7 +267,6 @@ export function WC() {
               );
             })}
           </ul>
-            </div>
           </>
         ) : (
           <div>

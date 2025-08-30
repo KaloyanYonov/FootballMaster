@@ -11,7 +11,6 @@ export function About() {
 
 
 
-        {/* need to fix these next time*/}
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="rounded-xl border border-slate-200 bg-white p-4 text-center">
             <h3 className="font-semibold text-slate-900">Champions League winners</h3>
