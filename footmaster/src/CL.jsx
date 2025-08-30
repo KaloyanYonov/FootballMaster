@@ -224,7 +224,7 @@ export function CL() {
           loading="lazy"
         />
       </div>
-      <section className="w-full max-w-xl rounded-2xl bg-white/90 backdrop-blur p-6 shadow-lg">
+      <section className="w-full max-w-xl rounded-2xl p-6 shadow-lg">
         {!diff ? (
           <>
             <h1 className="text-2xl font-semibold text-slate-900 text-center">
@@ -294,7 +294,7 @@ export function CL() {
             </button>
           </div>
         ) : mode === "Easy" ? (
-          
+          <>
           <div>
             <div className="flex items-center justify-between text-sm text-slate-700">
               <p className="inline-flex items-center gap-2">
@@ -326,7 +326,9 @@ export function CL() {
             >
               Enter
             </button>
-             <ul className="mt-10 grid grid-cols-6 gap-3 mb-3">
+             
+          </div>
+          <ul className="mt-10 grid grid-rows-2 grid-cols-6 gap-3 relative">
             {answers.map((name) => {
               const url = logoByClub[name];
               const guessed = isGuessed(name);
@@ -351,7 +353,7 @@ export function CL() {
               );
             })}
           </ul>
-          </div>
+          </>
         ) : (
           <div>
             <div className="flex items-center justify-between text-sm text-slate-700">

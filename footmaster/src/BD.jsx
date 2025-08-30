@@ -294,7 +294,7 @@ export function BD() {
           loading="lazy"
         />
       </div>
-      <section className="w-full max-w-xl rounded-2xl bg-white/90 backdrop-blur p-6 shadow-lg">
+      <section className="w-full max-w-xl rounded-2xl p-6 shadow-lg">
         {!diff ? (
           <>
             <h1 className="text-2xl font-semibold text-slate-900 text-center">
@@ -364,6 +364,7 @@ export function BD() {
             </button>
           </div>
         ) : mode === "Easy" ? (
+          <>
           <div>
             <div className="flex items-center justify-between text-sm text-slate-700">
               <p className="inline-flex items-center gap-2">
@@ -396,7 +397,8 @@ export function BD() {
             >
               Enter
             </button>
-            <ul className={`mt-3 grid grid-cols-6 gap-3 mb-10 `}> {/*will add a function here once I learn how to do it*/}
+          </div>
+          <ul className={`mt-3 grid grid-cols-9 gap-3 mb-10 `}>
               {answers.map((name) => {
                 const url = playerPic[name];
                 const guessed = isGuessed(name);
@@ -424,7 +426,7 @@ export function BD() {
                 );
               })}
             </ul>
-          </div>
+          </>
         ) : (
           <div>
             <div className="flex items-center justify-between text-sm text-slate-700">
