@@ -327,15 +327,34 @@ export function BD() {
             <h2 className="text-2xl font-semibold text-rose-700">Game Over!</h2>
             {mode === "Easy" ? (
               <>
-                <p className="mt-3 text-slate-700">You missed these players:</p>
-                <ul className="mt-2 list-disc list-inside text-slate-800 text-left">
-                  {answers
-                    .filter((a) => !correctGuesses.includes(a))
-                    .map((missed, i) => (
-                      <li key={i}>{missed}</li>
-                    ))}
-                </ul>
-              </>
+              <h3 className="text-2x1 text-rose-600 pt-5">Answers:</h3>
+              <ul className={`mt-3 grid grid-cols-9 gap-3 mb-10 `}>
+              {answers.map((name) => {
+                const url = playerPic[name];
+                const guessed = isGuessed(name);
+                return (
+                  <li
+                    key={name}
+                    className="w-full flex flex-col items-center text-center"
+                  >
+                    <img
+                      src={url}
+                      alt={`${name} crest`}
+                      className={`size-30 object-cover p-2 bg-white rounded-md shadow-sm transition-opacity duration-200`}
+                      loading="lazy"
+                    />
+                    <span
+                      className={`mt-1 text-[15px] ${
+                          guessed ? "text-slate-700" : "text-rose-700"
+                      }`}
+                    >
+                      {name}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+            </>
             ) : (
               <p className="mt-3 text-slate-700">
                 The correct answer for <strong>{currentYear}</strong> was:{" "}

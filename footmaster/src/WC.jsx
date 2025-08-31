@@ -137,7 +137,7 @@ export function WC() {
         />
       </div>
       
-      <section className="w-full max-w-xl rounded-2xl bg-white/90 backdrop-blur p-6">
+      <section className="w-full max-w-xl rounded-2xl p-6 shadow-lg">
         {!diff ? (
           <>
             <h1 className="text-2xl font-semibold text-slate-900 text-center">
@@ -170,17 +170,31 @@ export function WC() {
             <h2 className="text-2xl font-semibold text-rose-700">Game Over!</h2>
             {mode === "Easy" ? (
               <>
-                <p className="mt-3 text-slate-700">
-                  You missed these countries:
-                </p>
-                <ul className="mt-2 list-disc list-inside text-slate-800 text-left">
-                  {answers
-                    .filter((c) => !correctGuesses.includes(c))
-                    .map((missed, i) => (
-                      <li key={i}>{missed}</li>
-                    ))}
-                </ul>
-              </>
+              <h3 className="text-2x1 text-rose-600 pt-5">Answers:</h3>
+              <ul className="mt-10 flex gap-3 mb-3">
+              {answers.map((name) => {
+              const url = logoByCountry[name];
+              const guessed = isGuessed(name);
+              return (
+                <li key={name} className="flex flex-col items-center text-center">
+                  <img
+                    src={url}
+                    alt={`${name} crest`}
+                    className={`h-15 w-15 object-contain transition-opacity duration-200`}
+                    loading="lazy"
+                  />
+                  <span
+                    className={`mt-1 text-[15px] ${
+                      guessed ? "text-slate-700" : "text-rose-700"
+                    }`}
+                  >
+                    {name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+          </>
             ) : (
               <p className="mt-3 text-slate-700">
                 The correct answer for <strong>{currentYear}</strong> was:{" "}
@@ -242,7 +256,7 @@ export function WC() {
               </button>
               
             </div>
-            <ul className="mt-10 flex gap-3 mb-3 absolute">
+            <ul className="mt-10 flex gap-3 mb-3">
             {answers.map((name) => {
               const url = logoByCountry[name];
               const guessed = isGuessed(name);

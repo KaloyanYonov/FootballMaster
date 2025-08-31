@@ -134,13 +134,13 @@ export function CL() {
     "Juventus" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Juventus_Logo.png/1200px-Juventus_Logo.png",
     "PSV" : "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/1200px-PSV_Eindhoven.svg.png", 
     "Feyenoord" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feyenoord_logo_since_2024.svg/1200px-Feyenoord_logo_since_2024.svg.png",
-    "Benfica" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSwJ0o5cMqZXdFW8v8LTnZbEciVyT85LH04g&s",
+    "Benfica" : "https://upload.wikimedia.org/wikipedia/sco/thumb/a/a2/SL_Benfica_logo.svg/1200px-SL_Benfica_logo.svg.png",
     "Porto" : "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/FC_Porto.svg/1200px-FC_Porto.svg.png",
     "Red Star" : "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Red_Star_Belgrade_crest.svg/800px-Red_Star_Belgrade_crest.svg.png",
     "Marseille" : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Olympique_Marseille_logo.svg/1200px-Olympique_Marseille_logo.svg.png",
     "Hamburger" : "https://upload.wikimedia.org/wikipedia/commons/f/f7/Hamburger_SV_logo.svg",
     "Steaua" : "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Steaua_Bucure%C8%99ti.svg/1200px-Steaua_Bucure%C8%99ti.svg.png",
-    "Celtic" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc0GtnyKFGARgNxdmjcQ5LhgE_hPbAzVxTqg&s"
+    "Celtic" : "https://upload.wikimedia.org/wikipedia/en/7/71/Celtic_FC_crest.svg"
 
   };
 
@@ -257,14 +257,30 @@ export function CL() {
             <h2 className="text-2xl font-semibold text-rose-700">Game Over!</h2>
             {mode === "Easy" ? (
               <>
-                <p className="mt-3 text-slate-700">You missed these teams:</p>
-                <ul className="mt-2 list-disc list-inside text-slate-800 text-left">
-                  {answers
-                    .filter((a) => !correctGuesses.includes(a))
-                    .map((missed, i) => (
-                      <li key={i}>{missed}</li>
-                    ))}
-                </ul>
+                <h3 className="text-2x1 text-rose-600 pt-5">Answers:</h3>
+                <ul className="mt-10 grid grid-rows-2 grid-cols-6 gap-3 relative">
+                {answers.map((name) => {
+                  const url = logoByClub[name];
+                  const guessed = isGuessed(name);
+                  return (
+                    <li key={name} className="flex flex-col items-center text-center">
+                      <img
+                        src={url}
+                        alt={`${name} crest`}
+                        className={`h-15 w-15 object-contain transition-opacity duration-200`}
+                        loading="lazy"
+                      />
+                      <span
+                      className={`mt-1 text-[15px] ${
+                        guessed ? "text-slate-700" : "text-rose-700"
+                      }`}
+                      >
+                    {name}
+                    </span>
+                    </li>
+                  );
+                })}
+              </ul>
               </>
             ) : (
               <p className="mt-3 text-slate-700">
