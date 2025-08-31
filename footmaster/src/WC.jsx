@@ -4,6 +4,7 @@ import {
   handleEasyGuess,
   handleHardGuess,
 } from "../src/logic/functions";
+import { ReturnToMain } from "./Return";
 
 export function WC() {
   const [diff, setDiff] = useState(false);
@@ -124,6 +125,9 @@ export function WC() {
   }
 
   return (
+    <>
+    {/*<ReturnToMain/> -> to be continued*/}
+
     <main className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 flex items-center justify-center p-4">
       <div
         aria-hidden="true"
@@ -336,5 +340,6 @@ export function WC() {
         )}
       </section>
     </main>
+    </>
   );
 }

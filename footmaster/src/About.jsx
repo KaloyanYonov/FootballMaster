@@ -12,13 +12,13 @@ export function About() {
 
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-4 text-center">
+          <div className="rounded-xl border border-slate-200 p-4 text-center bg-linear-45 from-gray-600 to-slate-300">
             <h3 className="font-semibold text-slate-900">Champions League winners</h3>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 text-center">
+          <div className="rounded-xl border border-slate-200 bg-linear-90 from-yellow-500 to-lime-400 p-4 text-center">
             <h3 className="font-semibold text-slate-900">World Cup winners</h3>
           </div>
-          <div className="items-center  justify-between rounded-xl border border-slate-200 bg-white p-4 text-center"> 
+          <div className="items-center  justify-between rounded-xl border border-slate-200 bg-yellow-300 p-4 text-center"> 
             <h3 className="font-semibold text-slate-900">Ballon d'Or winners</h3>
           </div>
         </div>
@@ -32,7 +32,7 @@ export function About() {
             <div className="rounded-xl border border-slate-200 bg-white p-5">
               <div className="inline-flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-                <h3 className="text-lg font-semibold text-slate-900">Easy</h3>
+                <h3 className="text-lg font-semibold text-green-700">Easy</h3>
               </div>
               <p className="mt-3 text-slate-700">
                 Type the name of a correct winner-year doesn't matter.
@@ -40,7 +40,7 @@ export function About() {
               <ul className="mt-3 list-disc list-inside text-slate-700 space-y-1">
                 <li>
                   <span className="font-medium">Ballon d'Or:</span> enter the player's last name
-                  (unless two winners share the same last name).
+                  (unless two winners share the same last name, then enter his first and last name).
                 </li>
                 <li>
                   <span className="font-medium">Champions League:</span> some clubs must be written fully.
@@ -52,7 +52,7 @@ export function About() {
             <div className="rounded-xl border border-slate-200 bg-white p-5">
               <div className="inline-flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
-                <h3 className="text-lg font-semibold text-slate-900">Hard</h3>
+                <h3 className="text-lg font-semibold text-rose-700">Hard</h3>
               </div>
               <p className="mt-3 text-slate-700">
                 A random year appears. Type the winner for that specific year.

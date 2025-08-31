@@ -328,7 +328,7 @@ export function BD() {
             {mode === "Easy" ? (
               <>
               <h3 className="text-2x1 text-rose-600 pt-5">Answers:</h3>
-              <ul className={`mt-3 grid grid-cols-9 gap-3 mb-10 `}>
+              <ul className={`mt-3 grid grid-cols-7 gap-3 mb-10 `}>
               {answers.map((name) => {
                 const url = playerPic[name];
                 const guessed = isGuessed(name);
@@ -340,7 +340,7 @@ export function BD() {
                     <img
                       src={url}
                       alt={`${name} crest`}
-                      className={`size-30 object-cover p-2 bg-white rounded-md shadow-sm transition-opacity duration-200`}
+                      className={`size-20 object-cover p-2 bg-white rounded-md shadow-sm transition-opacity duration-200`}
                       loading="lazy"
                     />
                     <span
@@ -417,7 +417,7 @@ export function BD() {
               Enter
             </button>
           </div>
-          <ul className={`mt-3 grid grid-cols-9 gap-3 mb-10 `}>
+          <ul className={`mt-3 grid grid-cols-7 gap-3 mb-10 `}>
               {answers.map((name) => {
                 const url = playerPic[name];
                 const guessed = isGuessed(name);
