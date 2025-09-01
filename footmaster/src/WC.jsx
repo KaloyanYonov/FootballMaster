@@ -16,6 +16,7 @@ export function WC() {
   const [feedback, setFeedback] = useState("");
   const [currentYear, setCurrentYear] = useState(null);
   const [showEndMessage, setShowEndMessage] = useState(false);
+  const [inGame, setInGame] = useState(false);
 
   const answers = [
     "Argentina",
@@ -70,6 +71,7 @@ export function WC() {
   function startHardMode() {
     setCurrentYear(getRandomYear(hardMode));
     setFeedback("");
+    setInGame(true);
   }
 
   function handleGuess() {
@@ -86,7 +88,10 @@ export function WC() {
       } else {
         const newLives = lives - 1;
         setLives(newLives);
-        if (newLives === 0) setGameOver(true);
+        if (newLives === 0){
+          setGameOver(true);
+          setInGame(false);
+        }
       }
     } else if (mode === "Hard") {
       const { isCorrect, correctAnswer } = handleHardGuess(
@@ -100,7 +105,10 @@ export function WC() {
         const newLives = lives - 1;
         setLives(newLives);
         setFeedback(`Wrong! The correct answer was ${correctAnswer}.`);
-        if (newLives === 0) setGameOver(true);
+        if (newLives === 0) {
+          setGameOver(true);
+          setInGame(false);
+        }
       }
     }
 
@@ -110,6 +118,7 @@ export function WC() {
   function nextQuestion() {
     startHardMode();
     setFeedback("");
+    setInGame(true);
   }
 
   function restartGame() {
@@ -122,13 +131,14 @@ export function WC() {
     setFeedback("");
     setCurrentYear(null);
     setShowEndMessage(false);
+    setInGame(true);
   }
 
   return (
-    <>
-    {/*<ReturnToMain/> -> to be continued*/}
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 relative">
+    <ReturnToMain inGame={inGame}/>
 
-    <main className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 flex items-center justify-center p-4">
+    <main className="flex items-center justify-center p-4">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
@@ -153,6 +163,7 @@ export function WC() {
                 onClick={() => {
                   setMode("Easy");
                   setDiff(true);
+                  setInGame(true);
                 }}
               >
                 Easy
@@ -340,6 +351,6 @@ export function WC() {
         )}
       </section>
     </main>
-    </>
+    </div>
   );
 }

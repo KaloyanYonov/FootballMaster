@@ -4,6 +4,8 @@ import {
   handleEasyGuess,
   handleHardGuess,
 } from "../src/logic/functions";
+import { ReturnToMain } from "./Return";
+
 
 export function CL() {
   const [diff, setDiff] = useState(false);
@@ -15,6 +17,8 @@ export function CL() {
   const [feedback, setFeedback] = useState("");
   const [currentYear, setCurrentYear] = useState(null);
   const [showEndMessage, setShowEndMessage] = useState(false);
+  const [inGame, setInGame] = useState(false);
+
 
   const answers = [
     "Barcelona",
@@ -150,6 +154,7 @@ export function CL() {
   function startHardMode() {
     setCurrentYear(getRandomYear(hardMode));
     setFeedback("");
+    setInGame(true);
   }
 
   function handleGuess() {
@@ -170,6 +175,7 @@ export function CL() {
         setLives(newLives);
         if (newLives === 0) {
           setGameOver(true);
+          setInGame(false);
         }
       }
     } else if (mode === "Hard") {
@@ -187,6 +193,7 @@ export function CL() {
         setFeedback(`Wrong! The correct answer was ${correctAnswer}.`);
         if (newLives === 0) {
           setGameOver(true);
+          setInGame(false);
         }
       }
     }
@@ -209,10 +216,15 @@ export function CL() {
     setFeedback("");
     setCurrentYear(null);
     setShowEndMessage(false);
+    setInGame(true);
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 relative">
+
+    <ReturnToMain inGame={inGame}/>
+
+    <main className="flex items-center justify-center p-4">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
@@ -236,6 +248,7 @@ export function CL() {
                 onClick={() => {
                   setMode("Easy");
                   setDiff(true);
+                  setInGame(true);
                 }}
               >
                 Easy
@@ -424,5 +437,6 @@ export function CL() {
         )}
       </section>
     </main>
+    </div>
   );
 }

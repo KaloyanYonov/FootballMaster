@@ -4,6 +4,8 @@ import {
   handleHardGuess,
   getRandomYear,
 } from "./logic/functions";
+import { ReturnToMain } from "./Return";
+
 
 export function BD() {
   const [diff, setDiff] = useState(false);
@@ -15,6 +17,8 @@ export function BD() {
   const [feedback, setFeedback] = useState("");
   const [currentYear, setCurrentYear] = useState(null);
   const [showEndMessage, setShowEndMessage] = useState(false);
+  const [inGame, setInGame] = useState(false);
+
 
   const answers = [
     "Messi",
@@ -220,6 +224,7 @@ export function BD() {
   function startHardMode() {
     setCurrentYear(getRandomYear(hardMode));
     setFeedback("");
+    setInGame(true);
   }
 
   function handleGuess() {
@@ -240,6 +245,7 @@ export function BD() {
         setLives(newLives);
         if (newLives === 0) {
           setGameOver(true);
+          setInGame(false);
         }
       }
     } else if (mode === "Hard") {
@@ -257,6 +263,7 @@ export function BD() {
         setFeedback(`Wrong! The correct answer was ${correctAnswer}.`);
         if (newLives === 0) {
           setGameOver(true);
+          setInGame(false);
         }
       }
     }
@@ -279,10 +286,15 @@ export function BD() {
     setFeedback("");
     setCurrentYear(null);
     setShowEndMessage(false);
+    setInGame(true);
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-sky-50 to-emerald-100 relative">
+
+    <ReturnToMain inGame={inGame}/>
+
+    <main className="flex items-center justify-center p-4">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
@@ -306,6 +318,7 @@ export function BD() {
                 onClick={() => {
                   setMode("Easy");
                   setDiff(true);
+                  setInGame(true);
                 }}
               >
                 Easy
@@ -500,5 +513,6 @@ export function BD() {
         )}
       </section>
     </main>
+    </div>
   );
 }
