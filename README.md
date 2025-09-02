@@ -6,3 +6,19 @@ The project is a quiz game where you test your football knowledge in three categ
 To learn more about the quiz, head over to the About page when you run it.
 
 Have fun!
+
+## Scripts
+- `npm run dev` – start dev server
+- `npm run build` – production build
+- `npm run preview` – preview build locally
+
+## Tech
+- React + TypeScript
+- Vite
+- React Router
+- Tailwind
+
+## Setup
+```bash
+npm install
+npm run dev
